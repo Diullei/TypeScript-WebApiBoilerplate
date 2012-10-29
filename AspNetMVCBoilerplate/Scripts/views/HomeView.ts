@@ -4,13 +4,13 @@
 declare var require: any;
 
 import Backbone = module("Backbone");
-var $ = require('jquery');
+import template = module("template/homeTmpl");
 
 export class ClassImpl {
     public el = $("#container");
 
     public render() {
-        $(this.el).html('<div class="hero-unit"><h1>Welcome!</h1><div><p>Enjoy coding! - TypeScript AspNetMVC-Boilerplate</p></div></div>');
+        $(this.el).html(template.html);
     }
 }
 

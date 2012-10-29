@@ -210,6 +210,10 @@
     <Content Include="Scripts\views\HomeView.js">
       <DependentUpon>HomeView.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\views\template\homeTmpl.ts" />
+    <Content Include="Scripts\views\template\homeTmpl.js">
+      <DependentUpon>homeTmpl.ts</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -231,7 +235,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\views\template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\d.ts\backbone-0.9.d.key" />
