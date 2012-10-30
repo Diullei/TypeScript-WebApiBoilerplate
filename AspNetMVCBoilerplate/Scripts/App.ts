@@ -1,9 +1,7 @@
 /// <reference path="d.ts/backbone-0.9.d.ts"/>
 
 import Backbone = module("Backbone");
-import HomeViewModule = module("views/HomeView");
-
-var HomeView = HomeViewModule.Class;
+import homeView = module("views/HomeView");
 
 export class Router { 
     public routes: any = {
@@ -11,7 +9,7 @@ export class Router {
     }
 
     public index() { 
-        var view = <HomeViewModule.ClassImpl>new HomeView();
+        var view = new homeView.Home();
         view.render();
     }
 }

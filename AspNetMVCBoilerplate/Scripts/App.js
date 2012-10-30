@@ -1,9 +1,8 @@
-define(["require", "exports", "Backbone", "views/HomeView"], function(require, exports, __Backbone__, __HomeViewModule__) {
+define(["require", "exports", "Backbone", "views/HomeView"], function(require, exports, __Backbone__, __homeView__) {
     var Backbone = __Backbone__;
 
-    var HomeViewModule = __HomeViewModule__;
+    var homeView = __homeView__;
 
-    var HomeView = HomeViewModule.Class;
     var Router = (function () {
         function Router() {
             this.routes = {
@@ -11,7 +10,7 @@ define(["require", "exports", "Backbone", "views/HomeView"], function(require, e
             };
         }
         Router.prototype.index = function () {
-            var view = new HomeView();
+            var view = new homeView.Home();
             view.render();
         };
         return Router;
