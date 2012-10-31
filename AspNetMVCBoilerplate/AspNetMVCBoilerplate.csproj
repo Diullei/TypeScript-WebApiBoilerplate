@@ -206,6 +206,10 @@
       <DependentUpon>Main.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\views\HomeView.ts" />
+    <TypeScriptCompile Include="Scripts\Router.ts" />
+    <Content Include="Scripts\Router.js">
+      <DependentUpon>Router.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\text.js" />
     <Content Include="Scripts\views\HomeView.js">
       <DependentUpon>HomeView.ts</DependentUpon>
