@@ -32,7 +32,7 @@ declare module "Backbone" {
 
         bind(ev: string, f: Function, ctx?: any): void;  /// ????
 
-        defaults; // or defaults();
+        defaults(); // or defaults();
         toJSON(): string;
         fetch(options? );
         save(attributes? , options? ): void;
@@ -185,4 +185,9 @@ declare module "Backbone" {
         noConflict(): any;
         setDomLibrary(jQueryNew);
     }
+}
+
+interface IHasEvents {
+    on: (event: string, callback: (parms?: any, moreParms?: any) => any) => any;
+    off: (event: string) => any;
 }
