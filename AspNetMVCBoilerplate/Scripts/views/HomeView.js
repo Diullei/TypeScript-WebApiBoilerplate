@@ -12,15 +12,18 @@ define(["require", "exports", "Backbone", "template/homeTmpl", "../models/HomeMo
 
     var Home = (function (_super) {
         __extends(Home, _super);
-        function Home() {
-            _super.apply(this, arguments);
-
+        function Home(options) {
+                _super.call(this, options);
+            this.tagName = "div";
             this.el = $("#container");
         }
+        Home.prototype.initialize = function () {
+            console.log("Home view init.");
+        };
         Home.prototype.render = function () {
-            var model = new homeModel.HomeModel();
-            console.log(model);
-            $(this.el).html(template.html);
+            var model = new homeModel.Home();
+            var tmpl = _.template(template.html, model.toJSON());
+            $(this.el).html(tmpl);
         };
         return Home;
     })(Backbone.View);

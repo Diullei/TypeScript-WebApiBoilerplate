@@ -8,9 +8,9 @@ export interface HomeModelInterface {
     text: string;
 }
 
-export class HomeModel extends Backbone.Model implements IHasEvents { 
+export class Home extends Backbone.Model implements IHasEvents { 
 
-    public on: (event: string, callback: (model: HomeModel, error: any) => any) => any;
+    public on: (event: string, callback: (model: Home, error: any) => any) => any;
 
     public off: (event: string) => any;
 

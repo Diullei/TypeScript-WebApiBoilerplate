@@ -6,22 +6,22 @@ var __extends = this.__extends || function (d, b) {
 define(["require", "exports", "Backbone"], function(require, exports, __Backbone__) {
     var Backbone = __Backbone__;
 
-    var HomeModel = (function (_super) {
-        __extends(HomeModel, _super);
-        function HomeModel() {
+    var Home = (function (_super) {
+        __extends(Home, _super);
+        function Home() {
             _super.apply(this, arguments);
 
         }
-        HomeModel.prototype.initialize = function () {
+        Home.prototype.initialize = function () {
             console.log("HomeModel init.");
         };
-        HomeModel.prototype.defaults = function () {
+        Home.prototype.defaults = function () {
             return {
                 title: 'Welcome!',
                 text: 'Enjoy coding! - TypeScript AspNetMVC-Boilerplate'
             };
         };
-        HomeModel.prototype.validate = function (attrs) {
+        Home.prototype.validate = function (attrs) {
             if(_.isEmpty(attrs.title)) {
                 return "Title is required.";
             }
@@ -30,8 +30,8 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
             }
             return "";
         };
-        return HomeModel;
+        return Home;
     })(Backbone.Model);
-    exports.HomeModel = HomeModel;    
+    exports.Home = Home;    
 })
 

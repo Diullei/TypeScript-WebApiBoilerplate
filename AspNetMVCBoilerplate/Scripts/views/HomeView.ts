@@ -6,11 +6,27 @@ import template = module("template/homeTmpl");
 import homeModel = module("../models/HomeModel");
 
 export class Home extends Backbone.View { 
-    public el: HTMLElement = <any>$("#container");
+
+    public el: HTMLElement;
+
+    public model: homeModel.Home;
+
+    constructor(options?: any) {
+        super(options);
+        this.tagName = "div"; 
+        this.el = <HTMLElement><any>$("#container");
+    };    
+
+    initialize() {
+        console.log("Home view init.");
+    };
 
     public render() {
-        var model = new homeModel.HomeModel();
-        console.log(model);
-        $(this.el).html(template.html);
+        var model = new homeModel.Home();
+        
+        var tmpl = _.template(template.html, model.toJSON());
+        
+        // TODO: d.ts file to unders core have problem!    
+        $(this.el).html(<string><any>tmpl);
     }
 }

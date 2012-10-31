@@ -1,7 +1,7 @@
 export var html: string = 
 '<div class="hero-unit">\
-    <h1>Welcome!</h1>\
+    <h1><%= title %></h1>\
     <div>\
-        <p>Enjoy coding! - TypeScript AspNetMVC-Boilerplate</p>\
+        <p><%= text %></p>\
     </div>\
 </div>';
