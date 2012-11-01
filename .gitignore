@@ -2,7 +2,13 @@
 bin
 obj
 
-release\*.*
+release/*.*
+release/*/*.*
+release/*/*/*.*
+release/*/*/*/*.*
+release/*/*/*/*/*.*
+release/*/*/*/*/*/*.*
+release/*/*/*/*/*/*/*.*
 
 # mstest test results
 TestResults
