@@ -2,5 +2,7 @@
 bin
 obj
 
+release\*
+
 # mstest test results
 TestResults

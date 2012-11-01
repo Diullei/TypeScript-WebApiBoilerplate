@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -179,20 +180,18 @@
     <Content Include="Content\bootstrap\less\utilities.less" />
     <Content Include="Content\bootstrap\less\variables.less" />
     <Content Include="Content\bootstrap\less\wells.less" />
-    <TypeScriptCompile Include="Scripts\Config.ts" />
-    <TypeScriptCompile Include="Scripts\App.ts" />
-    <Content Include="Scripts\App.js">
-      <DependentUpon>App.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\app.ts" />
+    <Content Include="Scripts\app.js">
+      <DependentUpon>app.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\Config.js">
-      <DependentUpon>Config.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\config.ts" />
+    <Content Include="Scripts\config.js">
+      <DependentUpon>config.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\d.ts\backbone-0.9.d.ts" />
-    <TypeScriptCompile Include="Scripts\d.ts\requirejs.d.ts" />
     <Content Include="Scripts\d.ts\jquery-1.8.d.ts" />
-    <Content Include="Scripts\d.ts\requirejs.d.js">
-      <DependentUpon>requirejs.d.ts</DependentUpon>
-    </Content>
+    <Content Include="Scripts\d.ts\requirejs.d.js" />
+    <Content Include="Scripts\d.ts\requirejs.d.ts" />
     <Content Include="Scripts\d.ts\underscore-1.4.1.d.ts" />
     <Content Include="Scripts\libs\almond.js" />
     <Content Include="Scripts\libs\backbone.d.ts" />
@@ -201,36 +200,33 @@
     <Content Include="Scripts\libs\lodash.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\libs\text.js" />
-    <TypeScriptCompile Include="Scripts\Main.ts" />
-    <Content Include="Scripts\Main.js">
-      <DependentUpon>Main.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\main.ts" />
+    <Content Include="Scripts\main.js">
+      <DependentUpon>main.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Scripts\Router.ts" />
-    <TypeScriptCompile Include="Scripts\modules\home\models\HomeModel.ts" />
-    <TypeScriptCompile Include="Scripts\Mediator.ts" />
-    <Content Include="Scripts\Mediator.js">
-      <DependentUpon>Mediator.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\mediator.ts" />
+    <Content Include="Scripts\mediator.js">
+      <DependentUpon>mediator.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Scripts\modules\home\home.d.ts" />
-    <TypeScriptCompile Include="Scripts\modules\home\Facade.ts" />
-    <Content Include="Scripts\modules\home\Facade.js">
-      <DependentUpon>Facade.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\modules\home\facade.ts" />
+    <Content Include="Scripts\modules\home\facade.js">
+      <DependentUpon>facade.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\modules\home\home.d.js">
-      <DependentUpon>home.d.ts</DependentUpon>
+    <Content Include="Scripts\modules\home\home.d.ts" />
+    <TypeScriptCompile Include="Scripts\modules\home\models\homeModel.ts" />
+    <Content Include="Scripts\modules\home\models\homeModel.js">
+      <DependentUpon>homeModel.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\modules\home\models\HomeModel.js">
-      <DependentUpon>HomeModel.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="Scripts\modules\home\views\HomeView.ts" />
-    <Content Include="Scripts\modules\home\views\HomeView.js">
-      <DependentUpon>HomeView.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\modules\home\views\homeView.ts" />
+    <Content Include="Scripts\modules\home\views\homeView.js">
+      <DependentUpon>homeView.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modules\home\views\template\home.html" />
-    <Content Include="Scripts\Router.js">
-      <DependentUpon>Router.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\plugins\text.js" />
+    <TypeScriptCompile Include="Scripts\router.ts" />
+    <Content Include="Scripts\router.js">
+      <DependentUpon>router.ts</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,11 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\d.ts\backbone-0.9.d.key" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Scripts\d.ts\jquery-1.8.d.key" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Scripts\d.ts\underscore-1.4.1.d.key" />
   </ItemGroup>
   <PropertyGroup>

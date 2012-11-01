@@ -1,0 +1,1 @@
+var Shapes;(function(e){var t=e.Point=function(){function e(e,t){this.x=e,this.y=t}return e.prototype.getDist=function(){return Math.sqrt(this.x*this.x+this.y*this.y)},e.origin=new e(0,0),e}()})(Shapes||(Shapes={}));var p=new Shapes.Point(3,4),dist=p.getDist()

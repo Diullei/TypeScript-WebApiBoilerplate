@@ -1,0 +1,1 @@
+define(["require","exports","./views/HomeView"],function(e,t,n){function s(){i=new r.Home,i.render()}var r=n,i;t.initialize=s})

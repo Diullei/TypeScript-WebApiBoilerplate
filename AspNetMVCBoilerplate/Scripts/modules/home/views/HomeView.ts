@@ -16,7 +16,7 @@ export class Home extends Backbone.View {
         super(options);
         this.tagName = "div"; 
         this.el = <HTMLElement><any>$("#container");
-    };    
+    };
 
     public initialize() {
         console.log("Home view init.");

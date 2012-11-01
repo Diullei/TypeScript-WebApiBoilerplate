@@ -1,0 +1,1 @@
+define(["require","exports","Backbone","Router","Mediator"],function(e,t,n,r,i){var s=n,o=r,u=i;t.root="/",t.initialize=function(){u.subscribe("module:home:init",function(t){e(["modules/home/Facade"],function(e){e.initialize()})}),new(s.Router.extend(new o.Router))}})
