@@ -9,7 +9,7 @@ Lidar com aplicações de página simples (single page applications) é algo cada ve
 
 Este material está em constante desenvolvimento e tem sido atualizado a medida que avanço nas minhas pesquisar pessoais sobre o tema. Fique a vontade para contribuir, seja agregando conteúdo, seja corrigindo ou contestando qualquer abordagem apresentada. Toda contribuição será bem recebida! :)
 
-TODO:
+__TODO:__
 
 ## Por estou usando TypeScript?
 
@@ -40,8 +40,8 @@ Este template irá utilizar os seguintes componentes:
 * jquery
 * lodash
 
-*Esboço da estrutura de arquivos sugerida*
-
+_Esboço da estrutura de arquivos sugerida_
+```
 	[app root]
 	|
 	+--[scripts] // pasta com os arquivos de script
@@ -75,16 +75,17 @@ Este template irá utilizar os seguintes componentes:
 	   +--mediator.js // funciona como um propagador/controlador de eventos
 	   |
 	   +--router.js // configuração das rotas da aplicação
+```
 
-TODO:
+__TODO:__
 
 ## Mediator e Facade
 
-TODO:
+__TODO:__
 
 ## Arquitetura modular e AMD
 
-TODO:
+__TODO:__
 
 			   +--------------+
                |     DOM      |
@@ -119,8 +120,8 @@ Para ter um código mais testável e desacoplado devemos remover a dependência do 
 
 ## Bibliografia
 
-TODO:
+__TODO:__
 			   
 ## Licença
 
-TODO:
+__TODO:__
