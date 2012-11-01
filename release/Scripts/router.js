@@ -1,1 +1,0 @@
-define(["require","exports","Mediator"],function(e,t,n){var r=n,i=function(){function e(){this.routes={"":"index"}}return e.prototype.index=function(){r.publish("module:home:init")},e}();t.Router=i})
