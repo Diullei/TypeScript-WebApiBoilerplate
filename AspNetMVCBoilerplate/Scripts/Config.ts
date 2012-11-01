@@ -1,10 +1,15 @@
 /// <reference path="d.ts/requirejs.d.ts"/>
 
 class CustomRequirePathConfig implements IRequirePathConfig { 
-    public libs = "/Scripts/libs";
-    public plugins = "/Scripts/plugins";
-    public template = "/Scripts/views/template";
 
+    // paths
+    public libs: string = "/Scripts/libs";
+    public plugins: string = "/Scripts/plugins";
+
+    // plugins
+    public text: string = "/Scripts/plugins/text";
+
+    // libs
     public jquery: string = "/Scripts/libs/jquery";
     public lodash: string = "/Scripts/libs/lodash";
     public Backbone: string = "/Scripts/libs/backbone";

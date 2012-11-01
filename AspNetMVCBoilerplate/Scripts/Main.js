@@ -3,7 +3,6 @@ define(["require", "exports", "Backbone", "App"], function(require, exports, __B
 
     var App = __App__;
 
-    var $ = require('jquery');
     (function (Main) {
         App.initialize();
         Backbone.history.start({

@@ -3,12 +3,12 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "Backbone", "template/homeTmpl", "../models/HomeModel"], function(require, exports, __Backbone__, __template__, __homeModel__) {
+define(["require", "exports", "Backbone", "text!./template/home.html", "../models/HomeModel"], function(require, exports, __Backbone__, __template__, __homeMdl__) {
     var Backbone = __Backbone__;
 
     var template = __template__;
 
-    var homeModel = __homeModel__;
+    var homeMdl = __homeMdl__;
 
     var Home = (function (_super) {
         __extends(Home, _super);
@@ -21,8 +21,8 @@ define(["require", "exports", "Backbone", "template/homeTmpl", "../models/HomeMo
             console.log("Home view init.");
         };
         Home.prototype.render = function () {
-            var model = new homeModel.Home();
-            var tmpl = _.template(template.html, model.toJSON());
+            var model = new homeMdl.Home();
+            var tmpl = _.template(template, model.toJSON());
             $(this.el).html(tmpl);
         };
         return Home;

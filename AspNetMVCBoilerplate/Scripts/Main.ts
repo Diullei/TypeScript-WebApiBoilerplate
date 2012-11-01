@@ -5,7 +5,6 @@ declare var require: any;
 
 import Backbone = module("Backbone");
 import App = module("App");
-var $ = require('jquery');
 
 export module Main { 
     App.initialize();

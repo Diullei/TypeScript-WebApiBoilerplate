@@ -1,6 +1,5 @@
-define(["require", "exports", "views/HomeView"], function(require, exports, __homeView__) {
-    
-    var homeView = __homeView__;
+define(["require", "exports", "Mediator"], function(require, exports, __mediator__) {
+    var mediator = __mediator__;
 
     var Router = (function () {
         function Router() {
@@ -9,8 +8,7 @@ define(["require", "exports", "views/HomeView"], function(require, exports, __ho
             };
         }
         Router.prototype.index = function () {
-            var view = new homeView.Home();
-            view.render();
+            mediator.publish("module:home:init");
         };
         return Router;
     })();

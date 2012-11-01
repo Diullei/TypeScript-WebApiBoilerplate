@@ -205,23 +205,32 @@
     <Content Include="Scripts\Main.js">
       <DependentUpon>Main.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Scripts\views\HomeView.ts" />
     <TypeScriptCompile Include="Scripts\Router.ts" />
-    <TypeScriptCompile Include="Scripts\models\HomeModel.ts" />
-    <Content Include="Scripts\models\HomeModel.js">
+    <TypeScriptCompile Include="Scripts\modules\home\models\HomeModel.ts" />
+    <TypeScriptCompile Include="Scripts\Mediator.ts" />
+    <Content Include="Scripts\Mediator.js">
+      <DependentUpon>Mediator.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\home\home.d.ts" />
+    <TypeScriptCompile Include="Scripts\modules\home\Facade.ts" />
+    <Content Include="Scripts\modules\home\Facade.js">
+      <DependentUpon>Facade.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\home\home.d.js">
+      <DependentUpon>home.d.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\home\models\HomeModel.js">
       <DependentUpon>HomeModel.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\modules\home\views\HomeView.ts" />
+    <Content Include="Scripts\modules\home\views\HomeView.js">
+      <DependentUpon>HomeView.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\home\views\template\home.html" />
     <Content Include="Scripts\Router.js">
       <DependentUpon>Router.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\text.js" />
-    <Content Include="Scripts\views\HomeView.js">
-      <DependentUpon>HomeView.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="Scripts\views\template\homeTmpl.ts" />
-    <Content Include="Scripts\views\template\homeTmpl.js">
-      <DependentUpon>homeTmpl.ts</DependentUpon>
-    </Content>
+    <Content Include="Scripts\plugins\text.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

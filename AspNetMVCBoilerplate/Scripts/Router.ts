@@ -1,7 +1,6 @@
 /// <reference path="d.ts/backbone-0.9.d.ts"/>
 
-import Backbone = module("Backbone");
-import homeView = module("views/HomeView");
+import mediator = module("Mediator");
 
 export class Router { 
     public routes: any = {
@@ -9,7 +8,6 @@ export class Router {
     }
 
     public index() { 
-        var view = new homeView.Home();
-        view.render();
+        mediator.publish("module:home:init");
     }
 }
