@@ -2,7 +2,7 @@
 
 import mediator = module("Mediator");
 
-export class Router { 
+export class Config { 
     public routes: any = {
         "": "index"
     }
