@@ -14,5 +14,11 @@ export var initialize = function () {
         });
     });
 
-    new (Backbone.Router.extend(new router.Config()))();
+    mediator.subscribe("module:login:init", (arg) => { 
+        require(["modules/login/facade"], (login) => { 
+            login.initialize();
+        });
+    });
+
+    var cfg = new router.Config();
 }

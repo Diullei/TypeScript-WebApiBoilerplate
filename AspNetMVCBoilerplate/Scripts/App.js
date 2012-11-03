@@ -1,6 +1,5 @@
-define(["require", "exports", "Backbone", "router", "Mediator"], function(require, exports, __Backbone__, __router__, __mediator__) {
-    var Backbone = __Backbone__;
-
+define(["require", "exports", "router", "Mediator"], function(require, exports, __router__, __mediator__) {
+    
     var router = __router__;
 
     var mediator = __mediator__;
@@ -14,7 +13,14 @@ define(["require", "exports", "Backbone", "router", "Mediator"], function(requir
                 home.initialize();
             });
         });
-        new (Backbone.Router.extend(new router.Config()))();
+        mediator.subscribe("module:login:init", function (arg) {
+            require([
+                "modules/login/facade"
+            ], function (login) {
+                login.initialize();
+            });
+        });
+        var cfg = new router.Config();
     };
 })
 

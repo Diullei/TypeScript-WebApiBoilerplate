@@ -147,6 +147,9 @@ declare module "Backbone" {
     export class History {
         start(options? );
         navigate(fragment: string, options: any);
+        loadUrl(fragmentOverride? );
+        oldLoadUrl(fragmentOverride? );
+        fragment: string;
     }
 
     export class Sync {

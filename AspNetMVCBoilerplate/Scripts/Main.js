@@ -6,7 +6,6 @@ define(["require", "exports", "Backbone", "App"], function(require, exports, __B
     (function (Main) {
         App.initialize();
         Backbone.history.start({
-            pushState: true,
             root: App.root
         });
         $(document).on("click", "a:not([data-bypass])", function (evt) {

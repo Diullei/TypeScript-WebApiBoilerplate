@@ -9,10 +9,9 @@ import App = module("App");
 export module Main { 
     App.initialize();
 
-    // Trigger the initial route and enable HTML5 History API support, set the
     // root folder to '/' by default.  Change in app.js.
-    Backbone.history.start({ pushState: true, root: App.root });
-
+    Backbone.history.start({root: App.root});
+    
     // All navigation that is relative should be passed through the navigate
     // method, to be processed by the router. If the link has a `data-bypass`
     // attribute, bypass the delegation completely.

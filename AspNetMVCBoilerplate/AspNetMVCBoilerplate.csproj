@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,6 +186,10 @@
       <DependentUpon>app.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\config.ts" />
+    <TypeScriptCompile Include="Scripts\common.ts" />
+    <Content Include="Scripts\common.js">
+      <DependentUpon>common.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\config.js">
       <DependentUpon>config.ts</DependentUpon>
     </Content>
@@ -222,6 +227,23 @@
       <DependentUpon>homeView.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modules\home\views\template\home.html" />
+    <TypeScriptCompile Include="Scripts\modules\login\login.d.ts" />
+    <TypeScriptCompile Include="Scripts\modules\login\facade.ts" />
+    <Content Include="Scripts\modules\login\facade.js">
+      <DependentUpon>facade.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\login\login.d.js">
+      <DependentUpon>login.d.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\login\models\loginModel.ts" />
+    <Content Include="Scripts\modules\login\models\loginModel.js">
+      <DependentUpon>loginModel.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\login\views\loginView.ts" />
+    <Content Include="Scripts\modules\login\views\loginView.js">
+      <DependentUpon>loginView.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\login\views\template\login.html" />
     <Content Include="Scripts\plugins\text.js" />
     <TypeScriptCompile Include="Scripts\router.ts" />
     <Content Include="Scripts\router.js">
