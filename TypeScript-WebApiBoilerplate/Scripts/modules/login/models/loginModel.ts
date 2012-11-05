@@ -29,13 +29,13 @@ export class Login extends Backbone.Model implements IHasEvents {
 
     public validate(attrs: ILoginModelInterface) {
        
-       //if (_.isEmpty(attrs.title)) {
-       //     return "Title is required.";
-       //}
+       if (_.isEmpty(attrs.user)) {
+            return "User name is required.";
+       }
        
-       //if (_.isEmpty(attrs.text)) {
-       //     return "Text is required.";
-       //}
+       if (_.isEmpty(attrs.password)) {
+            return "Password is required.";
+       }
        
        return "";
     }

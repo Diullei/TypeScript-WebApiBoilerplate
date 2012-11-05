@@ -271,6 +271,14 @@
     <Content Include="Scripts\modules\login\models\loginModel.js">
       <DependentUpon>loginModel.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\modules\login\services\login.ts" />
+    <Content Include="Scripts\modules\login\services\login.js">
+      <DependentUpon>login.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\login\services\response.ts" />
+    <Content Include="Scripts\modules\login\services\response.js">
+      <DependentUpon>response.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\modules\login\views\loginView.js">
       <DependentUpon>loginView.ts</DependentUpon>
     </Content>
@@ -320,6 +328,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

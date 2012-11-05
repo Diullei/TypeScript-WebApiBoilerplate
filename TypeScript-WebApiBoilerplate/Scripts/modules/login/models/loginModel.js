@@ -22,6 +22,12 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
             };
         };
         Login.prototype.validate = function (attrs) {
+            if(_.isEmpty(attrs.user)) {
+                return "User name is required.";
+            }
+            if(_.isEmpty(attrs.password)) {
+                return "Password is required.";
+            }
             return "";
         };
         return Login;

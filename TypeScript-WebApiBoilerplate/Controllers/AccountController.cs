@@ -21,16 +21,15 @@ namespace TypeScript_WebApiBoilerplate.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        [HttpPost]
+        public JsonResult Login(string user, string password)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return Json("");
         }
-
+         
         //
         // POST: /Account/Login
 
-        [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)

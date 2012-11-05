@@ -1,2 +1,2 @@
-TypeScript AspNetMVCBoilerplate
-===============================
+TypeScript WebApiBoilerplate
+============================

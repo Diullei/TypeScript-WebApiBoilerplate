@@ -38,3 +38,8 @@ export class AppRouter extends Backbone.Router {
         }
     }
 }
+
+export interface IAsyncCallback { 
+    onSuccess: (result) => void;
+    onFailure: (caught) => void;
+}
