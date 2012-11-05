@@ -8,9 +8,19 @@ define(["require", "exports"], function(require, exports) {
                 type: "POST",
                 data: {
                     user: arg.user,
-                    password: arg.password
+                    password: arg.password,
+                    rememberMe: arg.rememberMe
                 }
-            }).done(asyncCallback.onSuccess).fail(function (jqXHR, textStatus) {
+            }).done(function (data) {
+                if(data.HasError) {
+                    asyncCallback.onFailure({
+                        message: data.Data,
+                        status: 500
+                    });
+                } else {
+                    asyncCallback.onSuccess(data.Data);
+                }
+            }).fail(function (jqXHR, textStatus) {
                 asyncCallback.onFailure({
                     message: jqXHR.statusText,
                     status: jqXHR.status

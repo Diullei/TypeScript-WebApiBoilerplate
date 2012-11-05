@@ -6,6 +6,7 @@ import Backbone = module("Backbone");
 export interface ILoginModelInterface { 
     user: string;
     password: string;
+    rememberMe: bool;
 }
 
 export class Login extends Backbone.Model implements IHasEvents { 
@@ -24,6 +25,7 @@ export class Login extends Backbone.Model implements IHasEvents {
         return {
             user: null,
             password: null,
+            rememberMe: false
         };
     };
 

@@ -24,10 +24,6 @@ define(["require", "exports", "Backbone", "text!./template/login.html", "../mode
             };
                 _super.call(this, options);
         }
-        Login.prototype.initialize = function () {
-            console.log("Login view init.");
-            _.bindAll(this, "signIn");
-        };
         Login.prototype.updateModel = function (model) {
             this.model = model;
             this.model.off("error");
@@ -74,9 +70,14 @@ define(["require", "exports", "Backbone", "text!./template/login.html", "../mode
         };
         Login.prototype.bindForm = function () {
             this.model.set({
-                user: $(this.el).find("#inputEmail").val(),
-                password: $(this.el).find("#inputPassword").val()
+                user: this._txtEmail.val(),
+                password: this._txtPassword.val(),
+                rememberMe: this._ckbRememberMe.is(":checked")
             });
+        };
+        Login.prototype.initialize = function () {
+            console.log("Login view init.");
+            _.bindAll(this, "signIn");
         };
         Login.prototype.render = function () {
             this.updateModel(this.model || new loginMdl.Login());
@@ -84,6 +85,9 @@ define(["require", "exports", "Backbone", "text!./template/login.html", "../mode
             $(this.el).html(tmpl);
             this._alertPanel = $($(".alert", this.el)[0]);
             this._btnSignIn = $($(".btn", this.el)[0]);
+            this._txtEmail = $(this.el).find("#inputEmail");
+            this._txtPassword = $(this.el).find("#inputPassword");
+            this._ckbRememberMe = $("input[type='checkbox']", this.el);
             this._alertPanel.hide();
         };
         return Login;

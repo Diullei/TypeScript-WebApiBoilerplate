@@ -10,17 +10,17 @@ import response = module("../services/response");
 
 export class Login extends Backbone.View { 
 
-    public el: HTMLElement;
-
-    public model: loginMdl.Login;
-
     private _alertPanel: JQuery;
-
     private _btnSignIn: JQuery;
-
+    private _txtEmail: JQuery;
+    private _txtPassword: JQuery;
+    private _ckbRememberMe: JQuery;
     private _service: services.LoginService;
-
     private _response: response.ResponseService;
+
+    public el: HTMLElement;
+    public model: loginMdl.Login;
+    public trigger: (event: string, data: any) => any;
 
     constructor(response: response.ResponseService, service: services.LoginService, options?: any) {
         this.tagName = "div"; 
@@ -35,20 +35,13 @@ export class Login extends Backbone.View {
         super(options);
     };
 
-    public trigger: (event: string, data: any) => any;
-
-    public initialize() {
-        console.log("Login view init.");
-        _.bindAll(this, "signIn");
-    };
-
-    public updateModel(model: loginMdl.Login) {
+    private updateModel(model: loginMdl.Login) {
         this.model = model;
         this.model.off("error");
         this.model.on("error", this.onError);
     };
 
-    public onError(model: loginMdl.Login, error: any) { 
+    private onError(model: loginMdl.Login, error: any) { 
         console.log("On error: " + error);
 
         this._alertPanel = $($(".alert", this.el)[0]);
@@ -57,7 +50,7 @@ export class Login extends Backbone.View {
         this._alertPanel.show();
     }
 
-    public signIn() {
+    private signIn() {
         this._alertPanel.hide();
 
         this.bindForm();
@@ -78,9 +71,9 @@ export class Login extends Backbone.View {
         this._btnSignIn.removeAttr("disabled");
     }
 
-    public login() { 
+    private login() { 
         this.desableSignInButton();
-        var postData = <{ user: string; password: string; }><any>this.model.toJSON();
+        var postData = <{ user: string; password: string; rememberMe: bool; }><any>this.model.toJSON();
         this._service.doPost(postData, {
             onSuccess: (result) => { 
                 this.enableSignInButton();
@@ -93,11 +86,17 @@ export class Login extends Backbone.View {
         });
     }
 
-    public bindForm() { 
+    private bindForm() { 
         this.model.set(<loginMdl.ILoginModelInterface>{
-            user: $(this.el).find("#inputEmail").val(),
-            password: $(this.el).find("#inputPassword").val(),
+            user: this._txtEmail.val(),
+            password: this._txtPassword.val(),
+            rememberMe: <bool><any>this._ckbRememberMe.is(":checked")
         });
+    }
+
+    public initialize() {
+        console.log("Login view init.");
+        _.bindAll(this, "signIn");
     }
 
     public render() {
@@ -105,10 +104,13 @@ export class Login extends Backbone.View {
 
         var tmpl = _.template(<string>template, this.model.toJSON());
         
-        // TODO: d.ts file to underscore have problem!    
         $(this.el).html(<string><any>tmpl);
+
         this._alertPanel = $($(".alert", this.el)[0]);
         this._btnSignIn = $($(".btn", this.el)[0]);
+        this._txtEmail = $(this.el).find("#inputEmail");
+        this._txtPassword = $(this.el).find("#inputPassword");
+        this._ckbRememberMe = $("input[type='checkbox']", this.el);
 
         this._alertPanel.hide();
     }

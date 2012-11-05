@@ -13,6 +13,12 @@ using TypeScript_WebApiBoilerplate.Models;
 
 namespace TypeScript_WebApiBoilerplate.Controllers
 {
+    public class JsonData 
+    {
+        public bool HasError { get; set; }
+        public dynamic Data { get; set; }
+    }
+
     [Authorize]
     [InitializeSimpleMembership]
     public class AccountController : Controller
@@ -22,26 +28,13 @@ namespace TypeScript_WebApiBoilerplate.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public JsonResult Login(string user, string password)
+        public JsonResult Login(string user, string password, bool rememberMe)
         {
-            return Json("");
-        }
-         
-        //
-        // POST: /Account/Login
-
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
-        {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (WebSecurity.Login(user, password, persistCookie: rememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return Json(new JsonData { });
             }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            return Json(new JsonData { HasError = true, Data = "The user name or password provided is incorrect." });
         }
 
         //

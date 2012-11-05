@@ -18,7 +18,8 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
         Login.prototype.defaults = function () {
             return {
                 user: null,
-                password: null
+                password: null,
+                rememberMe: false
             };
         };
         Login.prototype.validate = function (attrs) {
