@@ -243,11 +243,11 @@
     <Content Include="Scripts\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\modules\home\facade.ts" />
     <TypeScriptCompile Include="Scripts\mediator.ts" />
     <Content Include="Scripts\mediator.js">
       <DependentUpon>mediator.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Scripts\modules\home\facade.ts" />
     <Content Include="Scripts\modules\home\facade.js">
       <DependentUpon>facade.ts</DependentUpon>
     </Content>
@@ -275,8 +275,8 @@
     <Content Include="Scripts\modules\login\services\login.js">
       <DependentUpon>login.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Scripts\modules\login\services\response.ts" />
-    <Content Include="Scripts\modules\login\services\response.js">
+    <TypeScriptCompile Include="Scripts\response.ts" />
+    <Content Include="Scripts\response.js">
       <DependentUpon>response.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modules\login\views\loginView.js">
@@ -329,6 +329,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
+    <Folder Include="Scripts\tests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

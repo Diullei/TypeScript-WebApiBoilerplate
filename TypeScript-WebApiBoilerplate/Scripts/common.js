@@ -44,5 +44,43 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
         return AppRouter;
     })(Backbone.Router);
     exports.AppRouter = AppRouter;    
+    var BaseView = (function (_super) {
+        __extends(BaseView, _super);
+        function BaseView(options) {
+            this.tagName = "div";
+                _super.call(this, options);
+        }
+        BaseView.prototype.elementById = function (id) {
+            return $(this.el).find("#" + this._id + id);
+        };
+        BaseView.prototype.element = function (id) {
+            return $(id, this.el);
+        };
+        BaseView.prototype.bindClick = function (id, fn) {
+            if(!this.events) {
+                this.events = {
+                };
+            }
+            this.events["click #" + this._id + id] = fn;
+        };
+        return BaseView;
+    })(Backbone.View);
+    exports.BaseView = BaseView;    
+    var BaseFacade = (function () {
+        function BaseFacade() { }
+        return BaseFacade;
+    })();
+    exports.BaseFacade = BaseFacade;    
+    var Util = (function () {
+        function Util() { }
+        Util.guid = function guid() {
+            var S4 = function () {
+                return Math.floor(Math.random() * 65536).toString(16);
+            };
+            return "_" + (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
+        }
+        return Util;
+    })();
+    exports.Util = Util;    
 })
 

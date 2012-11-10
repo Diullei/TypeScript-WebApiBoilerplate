@@ -33,7 +33,7 @@ declare module "Backbone" {
         bind(ev: string, f: Function, ctx?: any): void;  /// ????
 
         defaults(); // or defaults();
-        toJSON(): string;
+        toJSON(): any;
         fetch(options? );
         save(attributes? , options? ): void;
         destroy(options? ): void;

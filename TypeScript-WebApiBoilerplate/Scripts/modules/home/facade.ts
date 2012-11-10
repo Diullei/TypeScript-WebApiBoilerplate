@@ -1,8 +1,16 @@
 import homeVw = module("./views/HomeView");
+import common = module("../../common");
 
-var view: homeVw.Home;
+export class Facade extends common.BaseFacade { 
 
-export function initialize() { 
-    view = new homeVw.Home();
-    view.render();
+    constructor (container: string) { 
+        this._id = common.Util.guid();
+        this._container = container;
+        super();
+    }
+
+    public initialize() { 
+        var view = new homeVw.Home(this._id, this._container);
+        view.render();
+    }
 }

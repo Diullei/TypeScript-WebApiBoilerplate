@@ -6,9 +6,12 @@ import Backbone = module("Backbone");
 import template = module("text!./template/login.html");
 import loginMdl = module("../models/loginModel");
 import services = module("../services/login");
-import response = module("../services/response");
+import mediator = module("../../../Mediator");
+import common = module("../../../common");
 
-export class Login extends Backbone.View { 
+export class Login extends common.BaseView { 
+
+    public model: loginMdl.Login;
 
     private _alertPanel: JQuery;
     private _btnSignIn: JQuery;
@@ -16,35 +19,27 @@ export class Login extends Backbone.View {
     private _txtPassword: JQuery;
     private _ckbRememberMe: JQuery;
     private _service: services.LoginService;
-    private _response: response.ResponseService;
 
-    public el: HTMLElement;
-    public model: loginMdl.Login;
-    public trigger: (event: string, data: any) => any;
-
-    constructor(response: response.ResponseService, service: services.LoginService, options?: any) {
-        this.tagName = "div"; 
-        this.el = <HTMLElement><any>$("#container");
+    constructor (id: string, contaierId: string, service: services.LoginService, options?: any) {
+        this._id = id;
+        this.el = <HTMLElement><any>$(contaierId);
         this._service = service;
-        this._response = response;
 
-        this.events = {
-            "click #btn": "signIn"
-        };
+        this.bindClick("_btn", "signIn");
 
         super(options);
-    };
+    }
 
     private updateModel(model: loginMdl.Login) {
         this.model = model;
         this.model.off("error");
-        this.model.on("error", this.onError);
-    };
+        this.model.on("error", () => { this.onError.apply(this, arguments) });
+    }
 
     private onError(model: loginMdl.Login, error: any) { 
         console.log("On error: " + error);
 
-        this._alertPanel = $($(".alert", this.el)[0]);
+        this._alertPanel = this.elementById("_alert");
         this._alertPanel.hide();
         this._alertPanel.text(error);
         this._alertPanel.show();
@@ -77,7 +72,7 @@ export class Login extends Backbone.View {
         this._service.doPost(postData, {
             onSuccess: (result) => { 
                 this.enableSignInButton();
-                this._response.redirect('/');
+                mediator.publish("module:login:ok");
             },
             onFailure: (caught) => { 
                 this.enableSignInButton();
@@ -102,15 +97,17 @@ export class Login extends Backbone.View {
     public render() {
         this.updateModel(this.model || new loginMdl.Login());
 
-        var tmpl = _.template(<string>template, this.model.toJSON());
+        var model = this.model.toJSON();
+        model.guid = this._id;
+        var tmpl = _.template(<string>template, model);
         
         $(this.el).html(<string><any>tmpl);
 
-        this._alertPanel = $($(".alert", this.el)[0]);
-        this._btnSignIn = $($(".btn", this.el)[0]);
-        this._txtEmail = $(this.el).find("#inputEmail");
-        this._txtPassword = $(this.el).find("#inputPassword");
-        this._ckbRememberMe = $("input[type='checkbox']", this.el);
+        this._alertPanel = this.elementById("_alert");
+        this._btnSignIn = this.elementById("_btn");
+        this._txtEmail = this.elementById("_inputEmail");
+        this._txtPassword = this.elementById("_inputPassword");
+        this._ckbRememberMe = this.element("input[type='checkbox']");
 
         this._alertPanel.hide();
     }

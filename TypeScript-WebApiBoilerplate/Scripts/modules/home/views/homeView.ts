@@ -5,17 +5,17 @@
 import Backbone = module("Backbone");
 import template = module("text!./template/home.html");
 import homeMdl = module("../models/HomeModel");
+import common = module("../../../common");
 
-export class Home extends Backbone.View { 
+export class Home extends common.BaseView { 
 
     public el: HTMLElement;
-
     public model: homeMdl.Home;
 
-    constructor(options?: any) {
+    constructor(id: string, contaierId: string, options?: any) {
+        this._id = id;
+        this.el = <HTMLElement><any>$(contaierId);
         super(options);
-        this.tagName = "div"; 
-        this.el = <HTMLElement><any>$("#container");
     };
 
     public initialize() {
@@ -24,10 +24,8 @@ export class Home extends Backbone.View {
 
     public render() {
         var model = new homeMdl.Home();
-        
         var tmpl = _.template(<string>template, model.toJSON());
-        
-        // TODO: d.ts file to underscore have problem!    
+
         $(this.el).html(<string><any>tmpl);
     }
 }

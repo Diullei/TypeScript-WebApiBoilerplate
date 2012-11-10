@@ -3,35 +3,37 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "Backbone", "text!./template/login.html", "../models/loginModel"], function(require, exports, __Backbone__, __template__, __loginMdl__) {
-    var Backbone = __Backbone__;
-
+define(["require", "exports", "text!./template/login.html", "../models/loginModel", "../../../Mediator", "../../../common"], function(require, exports, __template__, __loginMdl__, __mediator__, __common__) {
+    
     var template = __template__;
 
     var loginMdl = __loginMdl__;
 
     
-    
+    var mediator = __mediator__;
+
+    var common = __common__;
+
     var Login = (function (_super) {
         __extends(Login, _super);
-        function Login(response, service, options) {
-            this.tagName = "div";
-            this.el = $("#container");
+        function Login(id, contaierId, service, options) {
+            this._id = id;
+            this.el = $(contaierId);
             this._service = service;
-            this._response = response;
-            this.events = {
-                "click #btn": "signIn"
-            };
+            this.bindClick("_btn", "signIn");
                 _super.call(this, options);
         }
         Login.prototype.updateModel = function (model) {
+            var _this = this;
             this.model = model;
             this.model.off("error");
-            this.model.on("error", this.onError);
+            this.model.on("error", function () {
+                _this.onError.apply(_this, arguments);
+            });
         };
         Login.prototype.onError = function (model, error) {
             console.log("On error: " + error);
-            this._alertPanel = $($(".alert", this.el)[0]);
+            this._alertPanel = this.elementById("_alert");
             this._alertPanel.hide();
             this._alertPanel.text(error);
             this._alertPanel.show();
@@ -60,7 +62,7 @@ define(["require", "exports", "Backbone", "text!./template/login.html", "../mode
             this._service.doPost(postData, {
                 onSuccess: function (result) {
                     _this.enableSignInButton();
-                    _this._response.redirect('/');
+                    mediator.publish("module:login:ok");
                 },
                 onFailure: function (caught) {
                     _this.enableSignInButton();
@@ -81,17 +83,19 @@ define(["require", "exports", "Backbone", "text!./template/login.html", "../mode
         };
         Login.prototype.render = function () {
             this.updateModel(this.model || new loginMdl.Login());
-            var tmpl = _.template(template, this.model.toJSON());
+            var model = this.model.toJSON();
+            model.guid = this._id;
+            var tmpl = _.template(template, model);
             $(this.el).html(tmpl);
-            this._alertPanel = $($(".alert", this.el)[0]);
-            this._btnSignIn = $($(".btn", this.el)[0]);
-            this._txtEmail = $(this.el).find("#inputEmail");
-            this._txtPassword = $(this.el).find("#inputPassword");
-            this._ckbRememberMe = $("input[type='checkbox']", this.el);
+            this._alertPanel = this.elementById("_alert");
+            this._btnSignIn = this.elementById("_btn");
+            this._txtEmail = this.elementById("_inputEmail");
+            this._txtPassword = this.elementById("_inputPassword");
+            this._ckbRememberMe = this.element("input[type='checkbox']");
             this._alertPanel.hide();
         };
         return Login;
-    })(Backbone.View);
+    })(common.BaseView);
     exports.Login = Login;    
 })
 

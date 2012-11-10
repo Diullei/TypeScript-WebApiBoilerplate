@@ -7,8 +7,6 @@ import common = module("common");
 export class Auth implements common.IActionFilter {
     public onBefore(arg: common.ActionFilterArgument): void { 
         var router = <Config>arg.instance;
-        //arg.cancel = true;
-       // router.login();
     }
 
     public onAfter(): void { } 

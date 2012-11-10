@@ -1,10 +1,17 @@
 import loginVw = module("./views/loginView");
 import services = module("./services/login");
-import response = module("./services/response");
+import common = module("../../common");
 
-var view: loginVw.Login;
+export class Facade extends common.BaseFacade { 
 
-export function initialize() { 
-    view = new loginVw.Login(new response.ResponseService(), new services.LoginService());
-    view.render();
+    constructor (container: string) { 
+        this._id = common.Util.guid();
+        this._container = container;
+        super();
+    }
+
+    public initialize() { 
+        var view = new loginVw.Login(this._id, this._container, new services.LoginService());
+        view.render();
+    }
 }
