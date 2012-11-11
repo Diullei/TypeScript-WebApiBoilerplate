@@ -3,6 +3,8 @@
 import Backbone = module("Backbone");
 import mediator = module("Mediator");
 
+declare var $: any;
+
 /* *****************************************************
     Router
 ****************************************************** */
@@ -50,22 +52,21 @@ export class AppRouter extends Backbone.Router {
 export class BaseView extends Backbone.View { 
 
     _id: string;
+    _dom: IDOMService;
 
     public el: HTMLElement;
 
     public trigger: (event: string, data: any) => any;
 
-    constructor (options?: any) { 
+    constructor (dom: IDOMService, contaierId: string, options?: any) { 
+        this._dom = dom;
         this.tagName = "div"; 
+        this.el = this._dom.elementById(contaierId);
         super(options);
     }
 
     public elementById(id: string) { 
-        return $(this.el).find("#" + this._id + id);
-    }
-
-    public element(id: string) { 
-        return $(id, this.el);
+        return this._dom.elementById(this._id + id);
     }
 
     public bindClick(id: string, fn: string) { 
@@ -92,6 +93,10 @@ export class BaseFacade {
 export interface IAsyncCallback { 
     onSuccess: (result) => void;
     onFailure: (caught) => void;
+}
+
+export interface IDOMService { 
+    elementById(id: string): any;
 }
 
 /* *****************************************************

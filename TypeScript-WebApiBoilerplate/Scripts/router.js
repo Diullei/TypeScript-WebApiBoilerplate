@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "Mediator", "common"], function(require, exports, __mediator__, __common__) {
     
     var mediator = __mediator__;
@@ -38,4 +38,3 @@ define(["require", "exports", "Mediator", "common"], function(require, exports, 
     })(common.AppRouter);
     exports.Config = Config;    
 })
-

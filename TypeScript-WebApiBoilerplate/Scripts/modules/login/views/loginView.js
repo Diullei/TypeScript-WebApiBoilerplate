@@ -2,9 +2,8 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "text!./template/login.html", "../models/loginModel", "../../../Mediator", "../../../common"], function(require, exports, __template__, __loginMdl__, __mediator__, __common__) {
-    
     var template = __template__;
 
     var loginMdl = __loginMdl__;
@@ -16,12 +15,11 @@ define(["require", "exports", "text!./template/login.html", "../models/loginMode
 
     var Login = (function (_super) {
         __extends(Login, _super);
-        function Login(id, contaierId, service, options) {
+        function Login(dom, id, contaierId, service, options) {
             this._id = id;
-            this.el = $(contaierId);
             this._service = service;
             this.bindClick("_btn", "signIn");
-                _super.call(this, options);
+                _super.call(this, dom, contaierId, options);
         }
         Login.prototype.updateModel = function (model) {
             var _this = this;
@@ -86,16 +84,15 @@ define(["require", "exports", "text!./template/login.html", "../models/loginMode
             var model = this.model.toJSON();
             model.guid = this._id;
             var tmpl = _.template(template, model);
-            $(this.el).html(tmpl);
+            this.el.innerHTML = tmpl;
             this._alertPanel = this.elementById("_alert");
             this._btnSignIn = this.elementById("_btn");
             this._txtEmail = this.elementById("_inputEmail");
             this._txtPassword = this.elementById("_inputPassword");
-            this._ckbRememberMe = this.element("input[type='checkbox']");
+            this._ckbRememberMe = this.elementById("_ckb");
             this._alertPanel.hide();
         };
         return Login;
     })(common.BaseView);
     exports.Login = Login;    
 })
-

@@ -1,8 +1,6 @@
 /// <reference path="../../../d.ts/backbone-0.9.d.ts"/>
-/// <reference path="../../../d.ts/jquery-1.8.d.ts"/>
 /// <reference path="../login.d.ts"/>
 
-import Backbone = module("Backbone");
 import template = module("text!./template/login.html");
 import loginMdl = module("../models/loginModel");
 import services = module("../services/login");
@@ -20,14 +18,13 @@ export class Login extends common.BaseView {
     private _ckbRememberMe: JQuery;
     private _service: services.LoginService;
 
-    constructor (id: string, contaierId: string, service: services.LoginService, options?: any) {
+    constructor (dom: common.IDOMService, id: string, contaierId: string, service: services.LoginService, options?: any) {
         this._id = id;
-        this.el = <HTMLElement><any>$(contaierId);
         this._service = service;
 
         this.bindClick("_btn", "signIn");
 
-        super(options);
+        super(dom, contaierId, options);
     }
 
     private updateModel(model: loginMdl.Login) {
@@ -50,7 +47,7 @@ export class Login extends common.BaseView {
 
         this.bindForm();
         if (this.model.isValid()) { 
-            var credentials = <Backbone.Model><any>this.model.toJSON();
+            var credentials = this.model.toJSON();
             credentials.id = null;
             this.login();
         }
@@ -101,13 +98,13 @@ export class Login extends common.BaseView {
         model.guid = this._id;
         var tmpl = _.template(<string>template, model);
         
-        $(this.el).html(<string><any>tmpl);
+        this.el.innerHTML = <string><any>tmpl;
 
         this._alertPanel = this.elementById("_alert");
         this._btnSignIn = this.elementById("_btn");
         this._txtEmail = this.elementById("_inputEmail");
         this._txtPassword = this.elementById("_inputPassword");
-        this._ckbRememberMe = this.element("input[type='checkbox']");
+        this._ckbRememberMe = this.elementById("_ckb");
 
         this._alertPanel.hide();
     }

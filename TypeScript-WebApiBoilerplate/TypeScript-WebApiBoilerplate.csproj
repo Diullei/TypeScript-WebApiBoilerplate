@@ -230,13 +230,20 @@
     </Content>
     <Content Include="Scripts\d.ts\backbone-0.9.d.ts" />
     <Content Include="Scripts\d.ts\jquery-1.8.d.ts" />
+    <Content Include="Scripts\d.ts\qunit-1.10.d.ts" />
     <Content Include="Scripts\d.ts\requirejs.d.ts" />
     <Content Include="Scripts\d.ts\underscore-1.4.1.d.ts" />
+    <TypeScriptCompile Include="Scripts\dom.ts" />
+    <Content Include="Scripts\dom.js">
+      <DependentUpon>dom.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\libs\almond.js" />
     <Content Include="Scripts\libs\backbone.d.ts" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\jquery.js" />
     <Content Include="Scripts\libs\lodash.js" />
+    <Content Include="Scripts\libs\qunit\qunit.css" />
+    <Content Include="Scripts\libs\qunit\qunit.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\libs\text.js" />
     <TypeScriptCompile Include="Scripts\main.ts" />
@@ -256,6 +263,15 @@
     <TypeScriptCompile Include="Scripts\modules\home\models\homeModel.ts" />
     <Content Include="Scripts\modules\home\models\homeModel.js">
       <DependentUpon>homeModel.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\home\tests\cfg.ts" />
+    <Content Include="Scripts\modules\home\tests\cfg.js">
+      <DependentUpon>cfg.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\home\tests\login-test.html" />
+    <TypeScriptCompile Include="Scripts\modules\home\tests\main.ts" />
+    <Content Include="Scripts\modules\home\tests\main.js">
+      <DependentUpon>main.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modules\home\views\homeView.js">
       <DependentUpon>homeView.ts</DependentUpon>
@@ -288,6 +304,11 @@
     <Content Include="Scripts\router.js">
       <DependentUpon>router.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\tests\common.ts" />
+    <Content Include="Scripts\tests\common.js">
+      <DependentUpon>common.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\tests\libs\backbone-test.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -329,7 +350,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
-    <Folder Include="Scripts\tests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -341,6 +361,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Copy of _Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\d.ts\qunit-1.10.d.key" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

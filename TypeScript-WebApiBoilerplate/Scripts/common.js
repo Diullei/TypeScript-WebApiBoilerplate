@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "Backbone"], function(require, exports, __Backbone__) {
     var Backbone = __Backbone__;
 
@@ -46,15 +46,14 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
     exports.AppRouter = AppRouter;    
     var BaseView = (function (_super) {
         __extends(BaseView, _super);
-        function BaseView(options) {
+        function BaseView(dom, contaierId, options) {
+            this._dom = dom;
             this.tagName = "div";
+            this.el = this._dom.elementById(contaierId);
                 _super.call(this, options);
         }
         BaseView.prototype.elementById = function (id) {
-            return $(this.el).find("#" + this._id + id);
-        };
-        BaseView.prototype.element = function (id) {
-            return $(id, this.el);
+            return this._dom.elementById(this._id + id);
         };
         BaseView.prototype.bindClick = function (id, fn) {
             if(!this.events) {
@@ -83,4 +82,3 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
     })();
     exports.Util = Util;    
 })
-

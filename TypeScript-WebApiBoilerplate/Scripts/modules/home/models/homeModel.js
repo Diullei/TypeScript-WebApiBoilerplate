@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "Backbone"], function(require, exports, __Backbone__) {
     var Backbone = __Backbone__;
 
@@ -34,4 +34,3 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
     })(Backbone.Model);
     exports.Home = Home;    
 })
-

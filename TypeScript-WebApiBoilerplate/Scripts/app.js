@@ -1,10 +1,11 @@
-define(["require", "exports", "router", "Mediator", "response"], function(require, exports, __router__, __mediator__, __response__) {
-    
+define(["require", "exports", "router", "Mediator", "response", "dom"], function(require, exports, __router__, __mediator__, __response__, __dom__) {
     var router = __router__;
 
     var mediator = __mediator__;
 
     var response = __response__;
+
+    var dom = __dom__;
 
     exports.root = "/";
     exports.initialize = function () {
@@ -12,14 +13,14 @@ define(["require", "exports", "router", "Mediator", "response"], function(requir
             require([
                 "modules/home/facade"
             ], function (home) {
-                new home.Facade("#container").initialize();
+                new home.Facade(new dom.DOMService(), "container").initialize();
             });
         });
         mediator.subscribe("module:login:init", function (arg) {
             require([
                 "modules/login/facade"
             ], function (login) {
-                new login.Facade("#container").initialize();
+                new login.Facade(new dom.DOMService(), "container").initialize();
             });
         });
         mediator.subscribe("module:login:ok", function (arg) {
@@ -28,4 +29,3 @@ define(["require", "exports", "router", "Mediator", "response"], function(requir
         var cfg = new router.Config();
     };
 })
-
