@@ -22,3 +22,4 @@ define(["require", "exports", "../common"], function(require, exports, __common_
     })();
     exports.FakeDOMService = FakeDOMService;    
 })
+//@ sourceMappingURL=common.js.map

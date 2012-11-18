@@ -1,30 +1,24 @@
-var CustomRequirePathConfig = (function () {
-    function CustomRequirePathConfig() {
-        this.libs = "/Scripts/libs";
-        this.plugins = "/Scripts/plugins";
-        this.text = "/Scripts/plugins/text";
-        this.jquery = "/Scripts/libs/jquery";
-        this.lodash = "/Scripts/libs/lodash";
-        this.Backbone = "/Scripts/libs/backbone";
-    }
-    return CustomRequirePathConfig;
-})();
-var CustomRequireShimConfig = (function () {
-    function CustomRequireShimConfig() {
-        this.Backbone = {
+require.config({
+    paths: {
+        libs: "/Scripts/libs",
+        plugins: "/Scripts/plugins",
+        text: "/Scripts/plugins/text",
+        json: "/Scripts/plugins/json",
+        jquery: "/Scripts/libs/jquery",
+        lodash: "/Scripts/libs/lodash",
+        Backbone: "/Scripts/libs/backbone"
+    },
+    shim: {
+        Backbone: {
             deps: [
                 "lodash", 
                 "jquery"
             ],
             exports: "Backbone"
-        };
-    }
-    return CustomRequireShimConfig;
-})();
-require.config({
+        }
+    },
     deps: [
         "main"
-    ],
-    paths: new CustomRequirePathConfig(),
-    shim: new CustomRequireShimConfig()
+    ]
 });
+//@ sourceMappingURL=config.js.map

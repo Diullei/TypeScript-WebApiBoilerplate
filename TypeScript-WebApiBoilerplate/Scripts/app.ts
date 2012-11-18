@@ -1,7 +1,8 @@
 import router = module("router");
-import mediator = module("Mediator");
+import core = module("core");
 import response = module("response");
 import dom = module("dom");
+import common = module("common");
 
 declare var require: any;
 
@@ -9,19 +10,30 @@ export var root: string = "/";
 
 export var initialize = function () { 
 
-    mediator.subscribe("module:home:init", (arg) => { 
+    core.events.on("account:account:init", (action: string) => { 
+        require(["modules/account/facade", "json!/Account/Context"], (account, data) => { 
+
+            var context = new common.Context();
+
+            context.container = "container";
+            context.domService = new dom.DOMService();
+            context.isAuthenticated = data.isAuthenticated;
+
+            new account.Facade(context).initialize(action);
+        });
+    });
+
+    core.events.on("module:home:init", (arg) => { 
         require(["modules/home/facade"], (home) => { 
             new home.Facade(new dom.DOMService(), "container").initialize();
         });
     });
 
-    mediator.subscribe("module:login:init", (arg) => { 
-        require(["modules/login/facade"], (login) => { 
-            new login.Facade(new dom.DOMService(), "container").initialize();
-        });
+    core.events.on("module:login:ok", (arg) => { 
+        new response.ResponseService().redirect('/');
     });
 
-    mediator.subscribe("module:login:ok", (arg) => { 
+    core.events.on("account:register:ok", (arg) => { 
         new response.ResponseService().redirect('/');
     });
 

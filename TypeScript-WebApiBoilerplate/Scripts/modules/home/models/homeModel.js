@@ -34,3 +34,4 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
     })(Backbone.Model);
     exports.Home = Home;    
 })
+//@ sourceMappingURL=homeModel.js.map

@@ -24,3 +24,4 @@ define(["require", "exports", "./views/homeView", "../../common"], function(requ
     })(common.BaseFacade);
     exports.Facade = Facade;    
 })
+//@ sourceMappingURL=facade.js.map

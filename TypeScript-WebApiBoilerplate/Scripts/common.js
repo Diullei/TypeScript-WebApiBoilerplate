@@ -81,4 +81,10 @@ define(["require", "exports", "Backbone"], function(require, exports, __Backbone
         return Util;
     })();
     exports.Util = Util;    
+    var Context = (function () {
+        function Context() { }
+        return Context;
+    })();
+    exports.Context = Context;    
 })
+//@ sourceMappingURL=common.js.map

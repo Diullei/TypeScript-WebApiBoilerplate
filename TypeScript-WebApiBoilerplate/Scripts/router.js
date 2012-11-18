@@ -3,9 +3,9 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "Mediator", "common"], function(require, exports, __mediator__, __common__) {
+define(["require", "exports", "core", "common"], function(require, exports, __core__, __common__) {
     
-    var mediator = __mediator__;
+    var core = __core__;
 
     var common = __common__;
 
@@ -24,17 +24,16 @@ define(["require", "exports", "Mediator", "common"], function(require, exports, 
         function Config() {
                 _super.call(this);
             this.bindRoute("", this.index, new Auth());
-            this.bindRoute("login", this.login);
+            this.bindRoute("account/:action", this.account);
         }
         Config.prototype.index = function () {
-            console.log('index');
-            mediator.publish("module:home:init");
+            core.events.trigger("module:home:init");
         };
-        Config.prototype.login = function () {
-            console.log('login');
-            mediator.publish("module:login:init");
+        Config.prototype.account = function (action) {
+            core.events.trigger("account:account:init", action);
         };
         return Config;
     })(common.AppRouter);
     exports.Config = Config;    
 })
+//@ sourceMappingURL=router.js.map

@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "text!./template/home.html", "../models/HomeModel", "../../../common"], function(require, exports, __template__, __homeMdl__, __common__) {
+define(["require", "exports", "text!./template/home.html", "../models/homeModel", "../../../common"], function(require, exports, __template__, __homeMdl__, __common__) {
     var template = __template__;
 
     var homeMdl = __homeMdl__;
@@ -28,3 +28,4 @@ define(["require", "exports", "text!./template/home.html", "../models/HomeModel"
     })(common.BaseView);
     exports.Home = Home;    
 })
+//@ sourceMappingURL=homeView.js.map

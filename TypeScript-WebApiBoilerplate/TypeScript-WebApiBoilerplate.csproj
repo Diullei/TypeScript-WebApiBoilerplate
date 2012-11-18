@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <TypeScriptSourceMap> --sourcemap</TypeScriptSourceMap>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -174,6 +175,12 @@
     <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\bootstrap\less.js" />
+    <Content Include="Content\bootstrap\less\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap\less\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap\less\accordion.less" />
@@ -228,7 +235,16 @@
     <Content Include="Scripts\config.js">
       <DependentUpon>config.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\core.ts" />
+    <TypeScriptCompile Include="Scripts\context.ts" />
+    <Content Include="Scripts\context.js">
+      <DependentUpon>context.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\core.js">
+      <DependentUpon>core.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\d.ts\backbone-0.9.d.ts" />
+    <Content Include="Scripts\d.ts\lodash.d.ts" />
     <Content Include="Scripts\d.ts\jquery-1.8.d.ts" />
     <Content Include="Scripts\d.ts\qunit-1.10.d.ts" />
     <Content Include="Scripts\d.ts\requirejs.d.ts" />
@@ -240,6 +256,19 @@
     <Content Include="Scripts\libs\almond.js" />
     <Content Include="Scripts\libs\backbone.d.ts" />
     <Content Include="Scripts\libs\backbone.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-affix.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-alert.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-button.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-carousel.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-collapse.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-dropdown.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-modal.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-popover.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-scrollspy.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-tab.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-transition.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap-typeahead.js" />
     <Content Include="Scripts\libs\jquery.js" />
     <Content Include="Scripts\libs\lodash.js" />
     <Content Include="Scripts\libs\qunit\qunit.css" />
@@ -251,10 +280,45 @@
       <DependentUpon>main.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\modules\home\facade.ts" />
-    <TypeScriptCompile Include="Scripts\mediator.ts" />
-    <Content Include="Scripts\mediator.js">
-      <DependentUpon>mediator.ts</DependentUpon>
+    <TypeScriptCompile Include="Scripts\modules\account\account.d.ts" />
+    <Content Include="Scripts\modules\account\account.d.js">
+      <DependentUpon>account.d.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="Scripts\modules\account\facade.ts" />
+    <Content Include="Scripts\modules\account\facade.js">
+      <DependentUpon>facade.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\account\models\loginModel.ts" />
+    <Content Include="Scripts\modules\account\models\loginModel.js">
+      <DependentUpon>loginModel.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\account\services\login.ts" />
+    <TypeScriptCompile Include="Scripts\modules\account\models\registerModel.ts" />
+    <Content Include="Scripts\modules\account\models\registerModel.js">
+      <DependentUpon>registerModel.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\account\services\login.js">
+      <DependentUpon>login.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\account\views\loginView.ts" />
+    <TypeScriptCompile Include="Scripts\modules\account\services\register.ts" />
+    <Content Include="Scripts\modules\account\services\register.js">
+      <DependentUpon>register.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\account\views\loginView.js">
+      <DependentUpon>loginView.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\modules\account\views\registerView.ts" />
+    <TypeScriptCompile Include="Scripts\modules\account\views\p404View.ts" />
+    <Content Include="Scripts\modules\account\views\p404View.js">
+      <DependentUpon>p404View.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\account\views\registerView.js">
+      <DependentUpon>registerView.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\account\views\template\404.html" />
+    <Content Include="Scripts\modules\account\views\template\login.html" />
+    <Content Include="Scripts\modules\account\views\template\register.html" />
     <Content Include="Scripts\modules\home\facade.js">
       <DependentUpon>facade.ts</DependentUpon>
     </Content>
@@ -268,7 +332,7 @@
     <Content Include="Scripts\modules\home\tests\cfg.js">
       <DependentUpon>cfg.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\modules\home\tests\login-test.html" />
+    <Content Include="Scripts\modules\home\tests\home-test.html" />
     <TypeScriptCompile Include="Scripts\modules\home\tests\main.ts" />
     <Content Include="Scripts\modules\home\tests\main.js">
       <DependentUpon>main.ts</DependentUpon>
@@ -277,28 +341,19 @@
       <DependentUpon>homeView.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modules\home\views\template\home.html" />
-    <TypeScriptCompile Include="Scripts\modules\login\facade.ts" />
-    <Content Include="Scripts\modules\login\facade.js">
-      <DependentUpon>facade.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\modules\login\login.d.ts" />
-    <TypeScriptCompile Include="Scripts\modules\login\views\loginView.ts" />
-    <TypeScriptCompile Include="Scripts\modules\login\models\loginModel.ts" />
-    <Content Include="Scripts\modules\login\models\loginModel.js">
-      <DependentUpon>loginModel.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="Scripts\modules\login\services\login.ts" />
-    <Content Include="Scripts\modules\login\services\login.js">
-      <DependentUpon>login.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="Scripts\response.ts" />
+    <Content Include="Scripts\plugins\async.js" />
+    <Content Include="Scripts\plugins\depend.js" />
+    <Content Include="Scripts\plugins\font.js" />
+    <Content Include="Scripts\plugins\goog.js" />
+    <Content Include="Scripts\plugins\image.js" />
+    <Content Include="Scripts\plugins\json.js" />
+    <Content Include="Scripts\plugins\mdown.js" />
+    <Content Include="Scripts\plugins\noext.js" />
+    <Content Include="Scripts\plugins\propertyParser.js" />
     <Content Include="Scripts\response.js">
       <DependentUpon>response.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\modules\login\views\loginView.js">
-      <DependentUpon>loginView.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\modules\login\views\template\login.html" />
     <Content Include="Scripts\plugins\text.js" />
     <TypeScriptCompile Include="Scripts\router.ts" />
     <Content Include="Scripts\router.js">
@@ -393,11 +448,16 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="BeforeBuild">
+    <Message Text="Compiling TypeScript files" />
+    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ') --module AMD" />
+    <Exec Command="tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ') --module AMD" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="AfterBuild">
-  </Target> -->
+  </Target> 
   <Target Name="BeforeBuild">
-    <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ') --module AMD" />
-  </Target>
+    <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ') module AMD" />
+  </Target> -->
 </Project>

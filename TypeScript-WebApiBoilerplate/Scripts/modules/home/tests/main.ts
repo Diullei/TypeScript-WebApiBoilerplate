@@ -4,7 +4,7 @@
 import Backbone = module("Backbone");
 import home = module("../facade");
 import commonTest = module("../../../tests/common");
-import modelMdl = module("../models/HomeModel");
+import modelMdl = module("../models/homeModel");
 
 export var test: any;
 

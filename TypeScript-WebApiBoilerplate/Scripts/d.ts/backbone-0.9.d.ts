@@ -191,6 +191,6 @@ declare module "Backbone" {
 }
 
 interface IHasEvents {
-    on: (event: string, callback: (parms?: any, moreParms?: any) => any) => any;
+    on: (event: string, callback: (...args: any[]) => any) => any;
     off: (event: string) => any;
 }

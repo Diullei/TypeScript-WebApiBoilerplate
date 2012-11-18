@@ -8,3 +8,4 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.ResponseService = ResponseService;    
 })
+//@ sourceMappingURL=response.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"dom.js","sources":["dom.ts"],"names":["DOMService","DOMService.constructor","DOMService.elementById"],"mappings":"AAAA;IAAA,aAAuB;AAAQ;IAI/B;QAAAA;AAICA,QAHGA,mCAAAA,UAAmBA,EAAUA;YACzBE,OAAOA,CAACA,CAACA,GAAGA,GAAGA,EAAEA,CAACA,CAACA;QACvBA,CAACA;QACLF;AAACA,IAADA,CAACA,IAAA;IAJD,gCAIC,IAAA;;AACD"}

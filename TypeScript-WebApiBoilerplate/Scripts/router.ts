@@ -1,7 +1,7 @@
 /// <reference path="d.ts/backbone-0.9.d.ts"/>
 
 import Backbone = module("Backbone");
-import mediator = module("Mediator");
+import core = module("core");
 import common = module("common");
 
 export class Auth implements common.IActionFilter {
@@ -18,16 +18,14 @@ export class Config extends common.AppRouter {
         super();
 
         this.bindRoute("", this.index, new Auth());
-        this.bindRoute("login", this.login);
+        this.bindRoute("account/:action", this.account);
     }
 
     public index() {
-        console.log('index');
-        mediator.publish("module:home:init");
+        core.events.trigger("module:home:init");
     }
 
-    public login() {
-        console.log('login');
-        mediator.publish("module:login:init");
+    public account(action: string) {
+        core.events.trigger("account:account:init", action);
     }
 }

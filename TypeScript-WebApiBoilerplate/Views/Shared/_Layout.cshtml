@@ -12,12 +12,6 @@
         }
         </style>
 
-        <script>
-            ___Global = {
-                IS_AUTHENTICATED: false
-            };
-        </script>
-
         <script type="text/javascript" src="/Scripts/libs/jquery.js"></script>
 
         <link rel="stylesheet/less" type="text/css" href="/Content/bootstrap/less/bootstrap.less" />
@@ -41,6 +35,10 @@
                     <a class="brand" href="#">AspNetMVC-Boilerplate</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
+                            <li><a href="/#">Home</a></li>
+                            <li><a href="/#account/login">Login</a></li>
+                            <li><a href="/#account/register">Register</a></li>
+                            <li><a href="/Account/LogOff">LogOff</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -60,6 +58,20 @@
         <!-- Application source. -->
         <script data-main="/Scripts/config" src="/Scripts/libs/require.js"></script>
         <script type="text/javascript" src="/Content/bootstrap/less.js"></script>
+
+        <script src="~/Scripts/libs/bootstrap/bootstrap-affix.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-alert.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-button.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-carousel.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-collapse.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-dropdown.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-modal.js"></script>
+        <!-- script src="~/Scripts/libs/bootstrap/bootstrap-popover.js"></ !-->
+        <script src="~/Scripts/libs/bootstrap/bootstrap-scrollspy.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-tab.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-tooltip.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-transition.js"></script>
+        <script src="~/Scripts/libs/bootstrap/bootstrap-typeahead.js"></script>
 
     </body>
 </html>

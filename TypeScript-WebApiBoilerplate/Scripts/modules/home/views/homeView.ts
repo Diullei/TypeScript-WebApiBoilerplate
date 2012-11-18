@@ -2,7 +2,7 @@
 /// <reference path="../home.d.ts"/>
 
 import template = module("text!./template/home.html");
-import homeMdl = module("../models/HomeModel");
+import homeMdl = module("../models/homeModel");
 import common = module("../../../common");
 
 export class Home extends common.BaseView { 

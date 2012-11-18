@@ -1,7 +1,7 @@
 /// <reference path="d.ts/backbone-0.9.d.ts"/>
 
 import Backbone = module("Backbone");
-import mediator = module("Mediator");
+import mediator = module("core");
 
 declare var $: any;
 
@@ -23,7 +23,7 @@ export interface IActionFilter {
 export class AppRouter extends Backbone.Router { 
     private _index: number = 0;
 
-    public bindRoute(route: string, response: () => void, ...filters: IActionFilter[]) {
+    public bindRoute(route: string, response: (...args: string[]) => void, ...filters: IActionFilter[]) {
         var cancel = false;
 
         for (var i = 0; i < filters.length; i++) { 
@@ -56,7 +56,7 @@ export class BaseView extends Backbone.View {
 
     public el: HTMLElement;
 
-    public trigger: (event: string, data: any) => any;
+    public trigger: (event: string, ...args: any[]) => any;
 
     constructor (dom: IDOMService, contaierId: string, options?: any) { 
         this._dom = dom;
@@ -111,4 +111,14 @@ export class Util {
 
         return "_" + (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
     }
+}
+
+/* *****************************************************
+    Context
+****************************************************** */
+
+export class Context { 
+    container: string;
+    domService: IDOMService;
+    isAuthenticated: bool;
 }

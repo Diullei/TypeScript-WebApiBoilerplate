@@ -19,3 +19,4 @@ define(["require", "exports", "Backbone", "app"], function(require, exports, __B
     })(exports.Main || (exports.Main = {}));
     var Main = exports.Main;
 })
+//@ sourceMappingURL=main.js.map

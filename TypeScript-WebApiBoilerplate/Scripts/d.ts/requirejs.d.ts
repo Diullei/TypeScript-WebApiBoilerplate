@@ -17,7 +17,7 @@ interface IRequireConfigOptions {
 }
 
 interface IRequire {
-    config(options: IRequireConfigOptions): void;
+    config(options: any): void;
 }
 
 declare var require: IRequire;

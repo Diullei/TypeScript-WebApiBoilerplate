@@ -26,8 +26,8 @@ namespace TypeScript_WebApiBoilerplate.Controllers
         //
         // GET: /Account/Login
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         public JsonResult Login(string user, string password, bool rememberMe)
         {
             if (WebSecurity.Login(user, password, persistCookie: rememberMe))
@@ -37,11 +37,44 @@ namespace TypeScript_WebApiBoilerplate.Controllers
             return Json(new JsonData { HasError = true, Data = "The user name or password provided is incorrect." });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Register(string user, string password, string confirmPassword)
+        {
+            if (!string.IsNullOrWhiteSpace(password) && password == confirmPassword)
+            {
+                // Attempt to register the user
+                try
+                {
+                    WebSecurity.CreateUserAndAccount(user, password);
+                    WebSecurity.Login(user, password);
+                    return Json(new JsonData { });
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    return Json(new JsonData { HasError = true, Data = ErrorCodeToString(e.StatusCode) });
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return Json(new JsonData { HasError = true, Data = "Something failed." });
+        }
+
+        [AllowAnonymous]
+        public JsonResult Context() 
+        {
+            return Json(new 
+            {
+                isAuthenticated = WebSecurity.IsAuthenticated
+            },
+            JsonRequestBehavior.AllowGet);
+        }
+
         //
         // POST: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
@@ -61,29 +94,29 @@ namespace TypeScript_WebApiBoilerplate.Controllers
         //
         // POST: /Account/Register
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                try
-                {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
-                }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the user
+        //        try
+        //        {
+        //            WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+        //            WebSecurity.Login(model.UserName, model.Password);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        catch (MembershipCreateUserException e)
+        //        {
+        //            ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // POST: /Account/Disassociate

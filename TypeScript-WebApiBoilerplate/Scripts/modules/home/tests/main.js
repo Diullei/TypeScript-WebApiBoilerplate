@@ -1,4 +1,4 @@
-define(["require", "exports", "../facade", "../../../tests/common", "../models/HomeModel"], function(require, exports, __home__, __commonTest__, __modelMdl__) {
+define(["require", "exports", "../facade", "../../../tests/common", "../models/homeModel"], function(require, exports, __home__, __commonTest__, __modelMdl__) {
     
     var home = __home__;
 
@@ -34,3 +34,4 @@ define(["require", "exports", "../facade", "../../../tests/common", "../models/H
         }), 'Text is required.');
     });
 })
+//@ sourceMappingURL=main.js.map

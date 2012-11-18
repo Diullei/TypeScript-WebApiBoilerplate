@@ -10,3 +10,4 @@ define(["require", "exports", "common"], function(require, exports, __common__) 
     })();
     exports.DOMService = DOMService;    
 })
+//@ sourceMappingURL=dom.js.map

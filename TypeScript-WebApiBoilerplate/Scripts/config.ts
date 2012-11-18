@@ -1,29 +1,27 @@
 /// <reference path="d.ts/requirejs.d.ts"/>
 
-class CustomRequirePathConfig implements IRequirePathConfig { 
+require.config({
 
+    paths: {
     // paths
-    public libs: string = "/Scripts/libs";
-    public plugins: string = "/Scripts/plugins";
+    libs: "/Scripts/libs",
+    plugins: "/Scripts/plugins",
 
     // plugins
-    public text: string = "/Scripts/plugins/text";
+    text: "/Scripts/plugins/text",
+    json: "/Scripts/plugins/json",
 
     // libs
-    public jquery: string = "/Scripts/libs/jquery";
-    public lodash: string = "/Scripts/libs/lodash";
-    public Backbone: string = "/Scripts/libs/backbone";
-}
+    jquery: "/Scripts/libs/jquery",
+    lodash: "/Scripts/libs/lodash",
+    Backbone: "/Scripts/libs/backbone"
+    },
 
-class CustomRequireShimConfig implements IRequireShimConfig { 
-    Backbone: IRequireShimDefinition = <IRequireShimDefinition>{
-        deps: ["lodash", "jquery"],
-        exports: "Backbone"
-    };
-}
-
-require.config(<IRequireConfigOptions> {
-    deps: ["main"],
-    paths: new CustomRequirePathConfig(),
-    shim: new CustomRequireShimConfig()
+    shim: {
+        Backbone: {
+            deps: ["lodash", "jquery"],
+            exports: "Backbone"
+        }
+    },
+    deps: ["main"]
 });
