@@ -65,6 +65,7 @@ namespace TypeScript_WebApiBoilerplate.Controllers
         {
             return Json(new 
             {
+                email = WebSecurity.CurrentUserName,
                 isAuthenticated = WebSecurity.IsAuthenticated
             },
             JsonRequestBehavior.AllowGet);

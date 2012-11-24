@@ -175,54 +175,8 @@
     <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\bootstrap\less.js" />
-    <Content Include="Content\bootstrap\less\bootstrap.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\less\bootstrap.min.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\bootstrap\less\accordion.less" />
-    <Content Include="Content\bootstrap\less\alerts.less" />
-    <Content Include="Content\bootstrap\less\bootstrap.less" />
-    <Content Include="Content\bootstrap\less\breadcrumbs.less" />
-    <Content Include="Content\bootstrap\less\button-groups.less" />
-    <Content Include="Content\bootstrap\less\buttons.less" />
-    <Content Include="Content\bootstrap\less\carousel.less" />
-    <Content Include="Content\bootstrap\less\close.less" />
-    <Content Include="Content\bootstrap\less\code.less" />
-    <Content Include="Content\bootstrap\less\component-animations.less" />
-    <Content Include="Content\bootstrap\less\dropdowns.less" />
-    <Content Include="Content\bootstrap\less\forms.less" />
-    <Content Include="Content\bootstrap\less\grid.less" />
-    <Content Include="Content\bootstrap\less\hero-unit.less" />
-    <Content Include="Content\bootstrap\less\labels-badges.less" />
-    <Content Include="Content\bootstrap\less\layouts.less" />
-    <Content Include="Content\bootstrap\less\mixins.less" />
-    <Content Include="Content\bootstrap\less\modals.less" />
-    <Content Include="Content\bootstrap\less\navbar.less" />
-    <Content Include="Content\bootstrap\less\navs.less" />
-    <Content Include="Content\bootstrap\less\pager.less" />
-    <Content Include="Content\bootstrap\less\pagination.less" />
-    <Content Include="Content\bootstrap\less\popovers.less" />
-    <Content Include="Content\bootstrap\less\progress-bars.less" />
-    <Content Include="Content\bootstrap\less\reset.less" />
-    <Content Include="Content\bootstrap\less\responsive-1200px-min.less" />
-    <Content Include="Content\bootstrap\less\responsive-767px-max.less" />
-    <Content Include="Content\bootstrap\less\responsive-768px-979px.less" />
-    <Content Include="Content\bootstrap\less\responsive-navbar.less" />
-    <Content Include="Content\bootstrap\less\responsive-utilities.less" />
-    <Content Include="Content\bootstrap\less\responsive.less" />
-    <Content Include="Content\bootstrap\less\scaffolding.less" />
-    <Content Include="Content\bootstrap\less\sprites.less" />
-    <Content Include="Content\bootstrap\less\tables.less" />
-    <Content Include="Content\bootstrap\less\thumbnails.less" />
-    <Content Include="Content\bootstrap\less\tooltip.less" />
-    <Content Include="Content\bootstrap\less\type.less" />
-    <Content Include="Content\bootstrap\less\utilities.less" />
-    <Content Include="Content\bootstrap\less\variables.less" />
-    <Content Include="Content\bootstrap\less\wells.less" />
     <TypeScriptCompile Include="Scripts\app.ts" />
     <Content Include="Scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>
@@ -309,14 +263,10 @@
       <DependentUpon>loginView.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\modules\account\views\registerView.ts" />
-    <TypeScriptCompile Include="Scripts\modules\account\views\p404View.ts" />
-    <Content Include="Scripts\modules\account\views\p404View.js">
-      <DependentUpon>p404View.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\modules\account\views\registerView.js">
       <DependentUpon>registerView.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\modules\account\views\template\404.html" />
+    <Content Include="Scripts\modules\account\views\template\css\style-login-register.css" />
     <Content Include="Scripts\modules\account\views\template\login.html" />
     <Content Include="Scripts\modules\account\views\template\register.html" />
     <Content Include="Scripts\modules\home\facade.js">
@@ -342,6 +292,20 @@
     </Content>
     <Content Include="Scripts\modules\home\views\template\home.html" />
     <TypeScriptCompile Include="Scripts\response.ts" />
+    <TypeScriptCompile Include="Scripts\modules\menu\facade.ts" />
+    <Content Include="Scripts\modules\menu\facade.js">
+      <DependentUpon>facade.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\menu\menu.d.ts" />
+    <TypeScriptCompile Include="Scripts\modules\menu\views\menuView.ts" />
+    <TypeScriptCompile Include="Scripts\modules\menu\models\contextModel.ts" />
+    <Content Include="Scripts\modules\menu\models\contextModel.js">
+      <DependentUpon>contextModel.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\menu\views\menuView.js">
+      <DependentUpon>menuView.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\modules\menu\views\template\menu.html" />
     <Content Include="Scripts\plugins\async.js" />
     <Content Include="Scripts\plugins\depend.js" />
     <Content Include="Scripts\plugins\font.js" />
@@ -415,10 +379,50 @@
     <Content Include="Scripts\d.ts\underscore-1.4.1.d.key" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Copy of _Layout.cshtml" />
+    <Content Include="Scripts\d.ts\qunit-1.10.d.key" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\d.ts\qunit-1.10.d.key" />
+    <Content Include="Content\bootstrap\less\accordion.less" />
+    <Content Include="Content\bootstrap\less\alerts.less" />
+    <Content Include="Content\bootstrap\less\bootstrap.less" />
+    <Content Include="Content\bootstrap\less\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\less\button-groups.less" />
+    <Content Include="Content\bootstrap\less\buttons.less" />
+    <Content Include="Content\bootstrap\less\carousel.less" />
+    <Content Include="Content\bootstrap\less\close.less" />
+    <Content Include="Content\bootstrap\less\code.less" />
+    <Content Include="Content\bootstrap\less\component-animations.less" />
+    <Content Include="Content\bootstrap\less\dropdowns.less" />
+    <Content Include="Content\bootstrap\less\forms.less" />
+    <Content Include="Content\bootstrap\less\grid.less" />
+    <Content Include="Content\bootstrap\less\hero-unit.less" />
+    <Content Include="Content\bootstrap\less\labels-badges.less" />
+    <Content Include="Content\bootstrap\less\layouts.less" />
+    <Content Include="Content\bootstrap\less\media.less" />
+    <Content Include="Content\bootstrap\less\mixins.less" />
+    <Content Include="Content\bootstrap\less\modals.less" />
+    <Content Include="Content\bootstrap\less\navbar.less" />
+    <Content Include="Content\bootstrap\less\navs.less" />
+    <Content Include="Content\bootstrap\less\pager.less" />
+    <Content Include="Content\bootstrap\less\pagination.less" />
+    <Content Include="Content\bootstrap\less\popovers.less" />
+    <Content Include="Content\bootstrap\less\progress-bars.less" />
+    <Content Include="Content\bootstrap\less\reset.less" />
+    <Content Include="Content\bootstrap\less\responsive-1200px-min.less" />
+    <Content Include="Content\bootstrap\less\responsive-767px-max.less" />
+    <Content Include="Content\bootstrap\less\responsive-768px-979px.less" />
+    <Content Include="Content\bootstrap\less\responsive-navbar.less" />
+    <Content Include="Content\bootstrap\less\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\less\responsive.less" />
+    <Content Include="Content\bootstrap\less\scaffolding.less" />
+    <Content Include="Content\bootstrap\less\sprites.less" />
+    <Content Include="Content\bootstrap\less\tables.less" />
+    <Content Include="Content\bootstrap\less\thumbnails.less" />
+    <Content Include="Content\bootstrap\less\tooltip.less" />
+    <Content Include="Content\bootstrap\less\type.less" />
+    <Content Include="Content\bootstrap\less\utilities.less" />
+    <Content Include="Content\bootstrap\less\variables.less" />
+    <Content Include="Content\bootstrap\less\wells.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

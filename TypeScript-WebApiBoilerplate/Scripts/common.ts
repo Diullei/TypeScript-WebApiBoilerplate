@@ -118,7 +118,7 @@ export class Util {
 ****************************************************** */
 
 export class Context { 
-    container: string;
     domService: IDOMService;
     isAuthenticated: bool;
+    email: string;
 }

@@ -1,25 +1,14 @@
-﻿<form class="form-horizontal">
+﻿<link href="scripts/modules/account/views/template/css/style-login-register.css" rel="stylesheet" />
 
-  <div class="alert alert-error" id="<%= guid %>_alert"></div>
+      <form class="form-signin">
+          <h2 class="form-signin-heading">Please sign in</h2>
+          <div class="alert alert-error" id="<%= guid %>_alert"></div>
 
-  <div class="control-group">
-    <label class="control-label" for="<%= guid %>_inputLogin">Email</label>
-    <div class="controls">
-      <input type="text" id="<%= guid %>_inputLogin" placeholder="Login" value="<%= user %>">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="<%= guid %>_inputPassword">Password</label>
-    <div class="controls">
-      <input type="password" id="<%= guid %>_inputPassword" placeholder="Password" value="<%= password %>">
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <input type="checkbox" id="<%= guid %>_ckb" <%= rememberMe ? "checked" : "" %>> Remember me
-      </label>
-      <button type="button" class="btn" id="<%= guid %>_btn">Sign in</button>
-    </div>
-  </div>
-</form>
+        <input type="text" class="input-block-level" placeholder="Email address" id="<%= guid %>_inputLogin" value="<%= user %>">
+        <input type="password" class="input-block-level" placeholder="Password" id="<%= guid %>_inputPassword" value="<%= password %>">
+
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me" id="<%= guid %>_ckb" <%= rememberMe ? "checked" : "" %>> Remember me
+        </label>
+        <button class="btn btn-primary" type="button" id="<%= guid %>_btn">Sign in</button>
+      </form>

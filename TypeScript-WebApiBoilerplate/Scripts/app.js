@@ -13,20 +13,37 @@ define(["require", "exports", "router", "core", "response", "dom", "common"], fu
     exports.initialize = function () {
         core.events.on("account:account:init", function (action) {
             require([
+                "modules/menu/facade", 
                 "modules/account/facade", 
                 "json!/Account/Context"
-            ], function (account, data) {
+            ], function (menu, account, data) {
+                if(!data.isAuthenticated && action != "login" && action != "register") {
+                    core.events.trigger("account:account:init", "login");
+                    return;
+                }
                 var context = new common.Context();
-                context.container = "container";
                 context.domService = new dom.DOMService();
                 context.isAuthenticated = data.isAuthenticated;
-                new account.Facade(context).initialize(action);
+                context.email = data.email;
+                new menu.Facade(context, "head").initialize();
+                new account.Facade(context, "container").initialize(action);
             });
         });
         core.events.on("module:home:init", function (arg) {
             require([
-                "modules/home/facade"
-            ], function (home) {
+                "modules/menu/facade", 
+                "modules/home/facade", 
+                "json!/Account/Context"
+            ], function (menu, home, data) {
+                if(!data.isAuthenticated) {
+                    core.events.trigger("account:account:init", "login");
+                    return;
+                }
+                var context = new common.Context();
+                context.domService = new dom.DOMService();
+                context.isAuthenticated = data.isAuthenticated;
+                context.email = data.email;
+                new menu.Facade(context, "head").initialize();
                 new home.Facade(new dom.DOMService(), "container").initialize();
             });
         });

@@ -1,0 +1,1 @@
+module "text!./template/menu.html" { }

@@ -9,21 +9,11 @@ define(["require", "exports", "core", "common"], function(require, exports, __co
 
     var common = __common__;
 
-    var Auth = (function () {
-        function Auth() { }
-        Auth.prototype.onBefore = function (arg) {
-            var router = arg.instance;
-        };
-        Auth.prototype.onAfter = function () {
-        };
-        return Auth;
-    })();
-    exports.Auth = Auth;    
     var Config = (function (_super) {
         __extends(Config, _super);
         function Config() {
                 _super.call(this);
-            this.bindRoute("", this.index, new Auth());
+            this.bindRoute("", this.index);
             this.bindRoute("account/:action", this.account);
         }
         Config.prototype.index = function () {
